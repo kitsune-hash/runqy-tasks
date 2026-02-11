@@ -1,0 +1,40 @@
+name: database-migration
+display_name: "Database Migration"
+category: data
+tags: [migration, database, schema, sql, transform]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "Minutes to hours"
+memory_mb: 2000
+description: "Transform and migrate data between databases or schemas with validation and rollback."
+long_description: |
+  Transform and migrate data between databases or schemas.
+
+  ## Tools
+  - SQLAlchemy (database abstraction)
+  - Alembic (schema migrations)
+  - pandas (data transformation)
+
+  ## Features
+  - Incremental migration (resume on failure)
+  - Schema transformation and mapping
+  - Rollback support
+  - Progress tracking
+  - Data validation pre/post migration
+  - Multiple database support (PostgreSQL, MySQL, SQLite, etc.)
+
+  ## Performance
+  - Network I/O bound
+  - Minutes to hours depending on data volume
+models: []
+tools: ["SQLAlchemy", "Alembic", "pandas"]
+use_cases:
+  - Schema upgrades
+  - Platform migration
+  - Data warehouse loading
+  - Database sharding
+input_example: |
+  {"source": {"type": "mysql", "dsn": "mysql://..."}, "target": {"type": "postgres", "dsn": "postgres://..."}, "tables": ["users", "orders"]}
+output_example: |
+  {"tables_migrated": 2, "records": {"users": 125000, "orders": 890000}, "duration_sec": 340, "errors": 0}

@@ -1,0 +1,40 @@
+name: whisper-transcription
+display_name: "Speech-to-Text (Whisper)"
+category: ai
+tags: [audio, transcription, speech, whisper, subtitles]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "6s per minute of audio (GPU)"
+memory_mb: 3000
+description: "Transcribe audio and video files to text with timestamps using OpenAI Whisper."
+long_description: |
+  Transcribe audio and video files to text with word-level timestamps using OpenAI Whisper.
+  Supports multiple model sizes from tiny (fast, less accurate) to large-v3 (slower, highest accuracy).
+
+  ## Supported Models
+  - OpenAI Whisper (tiny → large-v3)
+  - faster-whisper (CTranslate2-optimized)
+
+  ## Features
+  - Word-level and segment-level timestamps
+  - Automatic language detection (99+ languages)
+  - SRT/VTT subtitle export
+  - Speaker diarization (with additional models)
+  - VAD filtering for cleaner output
+
+  ## Performance
+  - faster-whisper large-v3 GPU: ~10x real-time (1min audio → 6s)
+  - Whisper base CPU: ~1x real-time
+  - CPU viable but significantly slower for large files
+models: ["whisper-large-v3", "faster-whisper"]
+tools: ["faster-whisper", "CTranslate2"]
+use_cases:
+  - Podcast transcription
+  - Meeting notes
+  - Subtitles generation
+  - Voice search indexing
+input_example: |
+  {"audio_url": "https://example.com/podcast.mp3", "language": "auto", "model": "large-v3"}
+output_example: |
+  {"text": "Hello world...", "segments": [{"start": 0.0, "end": 1.5, "text": "Hello world"}], "language": "en"}

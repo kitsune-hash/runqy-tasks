@@ -1,0 +1,39 @@
+name: data-anonymization
+display_name: "Data Anonymization"
+category: data
+tags: [anonymization, pii, privacy, gdpr, compliance]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "10-100ms per record"
+memory_mb: 2000
+description: "Remove or mask PII from datasets for GDPR compliance, data sharing, and analytics."
+long_description: |
+  Remove or mask Personally Identifiable Information (PII) from datasets.
+
+  ## Tools
+  - Presidio (Microsoft, NER-based detection)
+  - spaCy NER (entity recognition)
+  - Regex patterns (structured PII)
+
+  ## Features
+  - Detect: names, emails, phones, addresses, credit cards, SSNs
+  - Custom pattern support
+  - Consistent pseudonymization (same input → same fake output)
+  - Multiple strategies: redact, mask, hash, fake
+  - Batch processing
+
+  ## Performance
+  - 10-100ms per record
+  - CPU only
+models: []
+tools: ["Presidio", "spaCy", "regex"]
+use_cases:
+  - GDPR compliance
+  - Safe data sharing
+  - Test data generation
+  - Analytics on sensitive data
+input_example: |
+  {"data_url": "s3://data/customers.csv", "columns": ["name", "email", "phone"], "strategy": "pseudonymize"}
+output_example: |
+  {"output_url": "s3://data/customers_anon.csv", "records": 50000, "pii_found": {"name": 50000, "email": 49800, "phone": 32000}}

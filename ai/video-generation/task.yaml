@@ -1,0 +1,38 @@
+name: video-generation
+display_name: "Video Generation"
+category: ai
+tags: [video, generation, diffusion, wan, text-to-video]
+hardware: [gpu]
+gpu_required: true
+mode: long_running
+avg_latency: "30s-5min per clip depending on length & resolution"
+memory_mb: 24000
+description: "Generate short video clips from text or image prompts using diffusion models."
+long_description: |
+  Generate short video clips from text or image prompts using state-of-the-art video diffusion models.
+
+  ## Supported Models
+  - Wan2.1/2.2 Text-to-Video and Image-to-Video
+  - Via ComfyUI or diffusers
+
+  ## Features
+  - Text-to-video generation
+  - Image-to-video (animate a still image)
+  - Configurable duration and resolution
+  - Multiple output formats (MP4, GIF)
+
+  ## Performance
+  - 30s-5min per clip depending on length & resolution
+  - 24GB+ VRAM required for 14B parameter models
+  - 12GB+ VRAM for smaller variants
+models: ["Wan2.1", "Wan2.2"]
+tools: ["ComfyUI", "diffusers", "PyTorch"]
+use_cases:
+  - Social media content
+  - Product demos
+  - Animated logos
+  - Creative storytelling
+input_example: |
+  {"prompt": "A cat playing piano, cinematic lighting", "duration": 4, "fps": 24}
+output_example: |
+  {"video_url": "https://storage.example.com/output/vid_xyz.mp4", "duration_sec": 4, "frames": 96}

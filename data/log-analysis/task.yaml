@@ -1,0 +1,41 @@
+name: log-analysis
+display_name: "Log Aggregation & Analysis"
+category: data
+tags: [logs, analysis, monitoring, parsing, metrics]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "Varies by log volume"
+memory_mb: 2000
+description: "Parse, aggregate, and analyze application logs for errors, patterns, and metrics."
+long_description: |
+  Parse, aggregate, and analyze application logs.
+
+  ## Tools
+  - pandas (data analysis)
+  - regex / custom parsers
+  - Statistical analysis libraries
+
+  ## Features
+  - Pattern matching and extraction
+  - Error rate tracking
+  - Performance metric extraction
+  - Anomaly detection
+  - Alerting on thresholds
+  - Multiple log format support (JSON, syslog, custom)
+
+  ## Performance
+  - Varies by log volume
+  - RAM proportional to log size
+  - Streaming mode for continuous processing
+models: []
+tools: ["pandas", "regex"]
+use_cases:
+  - Error tracking
+  - Performance monitoring
+  - Security audit
+  - Usage analytics
+input_example: |
+  {"log_url": "s3://logs/app/2024-01-15/", "patterns": ["ERROR", "WARN"], "aggregate_by": "hour"}
+output_example: |
+  {"total_lines": 1250000, "errors": 342, "warnings": 1205, "top_errors": [{"pattern": "ConnectionTimeout", "count": 128}]}

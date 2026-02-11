@@ -1,0 +1,41 @@
+name: ocr
+display_name: "OCR / Document Extraction"
+category: media
+tags: [ocr, text-extraction, document, pdf, scanning]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "1-10s per page"
+memory_mb: 2000
+description: "Extract text from images, scanned documents, and PDFs with layout detection."
+long_description: |
+  Extract text from images, scanned documents, and PDFs using OCR engines.
+
+  ## Supported Models
+  - Tesseract (open-source standard)
+  - EasyOCR (deep learning, 80+ languages)
+  - PaddleOCR (high accuracy, fast)
+  - Surya (modern, layout-aware)
+
+  ## Features
+  - 100+ language support
+  - Layout detection and reading order
+  - Table extraction
+  - Handwriting recognition
+  - Searchable PDF output
+
+  ## Performance
+  - 1-10s per page depending on complexity
+  - CPU viable for all engines
+  - GPU accelerates EasyOCR and PaddleOCR
+models: ["Tesseract", "EasyOCR", "PaddleOCR", "Surya"]
+tools: ["Tesseract", "EasyOCR", "PaddleOCR"]
+use_cases:
+  - Invoice processing
+  - Receipt scanning
+  - Document digitization
+  - Searchable PDF creation
+input_example: |
+  {"image_url": "https://example.com/scan.png", "languages": ["en", "fr"], "engine": "paddleocr"}
+output_example: |
+  {"text": "Invoice #12345\nDate: 2024-01-15\nTotal: $1,234.56", "blocks": [...], "confidence": 0.95}

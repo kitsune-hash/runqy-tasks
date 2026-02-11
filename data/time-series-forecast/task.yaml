@@ -1,0 +1,40 @@
+name: time-series-forecast
+display_name: "Time Series Forecasting"
+category: data
+tags: [forecasting, time-series, prophet, prediction, analytics]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "1-60s per series"
+memory_mb: 2000
+description: "Generate forecasts from historical time series data with seasonality and trend detection."
+long_description: |
+  Generate forecasts from historical time series data.
+
+  ## Supported Models
+  - Prophet (Facebook/Meta, robust to missing data)
+  - statsmodels (ARIMA, ETS, classical methods)
+  - NeuralProphet (neural network extension, GPU)
+  - TimesFM (Google's foundation model, GPU)
+
+  ## Features
+  - Automatic seasonality detection
+  - Holiday and event effects
+  - Confidence intervals
+  - Multi-series forecasting
+  - Trend changepoint detection
+
+  ## Performance
+  - Prophet/statsmodels: 1-30s on CPU
+  - NeuralProphet/TimesFM: faster on GPU
+models: ["Prophet", "ARIMA", "ETS", "NeuralProphet", "TimesFM"]
+tools: ["Prophet", "statsmodels", "NeuralProphet"]
+use_cases:
+  - Demand forecasting
+  - Capacity planning
+  - Financial projections
+  - Inventory management
+input_example: |
+  {"data_url": "s3://data/sales_daily.csv", "horizon": 30, "frequency": "daily", "model": "prophet"}
+output_example: |
+  {"forecast": [{"date": "2024-02-01", "value": 1250, "lower": 1100, "upper": 1400}], "metrics": {"mape": 0.08}}

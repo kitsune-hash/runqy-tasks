@@ -1,0 +1,40 @@
+name: etl-pipeline
+display_name: "ETL Pipeline"
+category: data
+tags: [etl, data, pipeline, transform, ingestion]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "Seconds to hours depending on volume"
+memory_mb: 4000
+description: "Extract, transform, and load data between sources with schema mapping and validation."
+long_description: |
+  Extract, transform, and load data between databases, APIs, files, and data warehouses.
+
+  ## Tools
+  - pandas / polars (data manipulation)
+  - DuckDB (SQL analytics on files)
+  - SQLAlchemy (database connectivity)
+
+  ## Features
+  - Schema mapping and transformation
+  - Data validation and quality checks
+  - Incremental loads (CDC, timestamps)
+  - Error handling with dead letter queue
+  - Multiple source/destination connectors
+
+  ## Performance
+  - Throughput depends on data volume and transformations
+  - RAM proportional to dataset size
+  - polars for large datasets (faster than pandas)
+models: []
+tools: ["pandas", "polars", "DuckDB", "SQLAlchemy"]
+use_cases:
+  - Database sync
+  - API to warehouse ingestion
+  - CSV normalization
+  - Data lake ingestion
+input_example: |
+  {"source": {"type": "postgres", "query": "SELECT * FROM orders WHERE date > '2024-01-01'"}, "destination": {"type": "parquet", "path": "s3://lake/orders/"}}
+output_example: |
+  {"records_processed": 125000, "records_failed": 3, "duration_sec": 45, "output_size_mb": 28}

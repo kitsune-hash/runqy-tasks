@@ -1,0 +1,39 @@
+name: face-detection-blur
+display_name: "Face Detection & Blur"
+category: media
+tags: [face, detection, blur, privacy, gdpr, video]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "20-100ms per image"
+memory_mb: 2000
+description: "Detect faces in images and video, apply blur for privacy and GDPR compliance."
+long_description: |
+  Detect faces in images and video frames, then apply blur or pixelation for privacy.
+
+  ## Supported Models
+  - MediaPipe Face Detection (fast, CPU-friendly)
+  - RetinaFace (high accuracy)
+  - YOLO-face (real-time video)
+
+  ## Features
+  - Image and video processing
+  - Configurable blur intensity
+  - Bounding box output
+  - Batch processing
+  - Real-time video on GPU
+
+  ## Performance
+  - 20-100ms per image on CPU
+  - Real-time video processing on GPU
+models: ["MediaPipe", "RetinaFace", "YOLO-face"]
+tools: ["MediaPipe", "OpenCV", "PyTorch"]
+use_cases:
+  - GDPR compliance
+  - Privacy protection
+  - Video anonymization
+  - Dashcam footage processing
+input_example: |
+  {"image_url": "https://example.com/crowd.jpg", "blur_strength": 30}
+output_example: |
+  {"image_url": "https://storage.example.com/output/blurred.jpg", "faces_detected": 5, "bboxes": [[120, 80, 200, 180], ...]}

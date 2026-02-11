@@ -1,0 +1,40 @@
+name: image-generation
+display_name: "Image Generation"
+category: ai
+tags: [image, diffusion, stable-diffusion, flux, art]
+hardware: [gpu]
+gpu_required: true
+mode: long_running
+avg_latency: "3-15s per image depending on resolution & steps"
+memory_mb: 12000
+description: "Generate images from text prompts using Stable Diffusion, SDXL, Flux, and other diffusion models."
+long_description: |
+  Generate high-quality images from text prompts using state-of-the-art diffusion models.
+  The model stays loaded in GPU memory for fast generation without cold starts.
+
+  ## Supported Models
+  - Stable Diffusion XL, Flux, Wan2.1
+  - Via ComfyUI or diffusers library
+
+  ## Features
+  - Text-to-image generation
+  - LoRA support for style customization
+  - ControlNet for guided generation
+  - img2img and inpainting workflows
+  - Configurable resolution, steps, CFG scale
+
+  ## Performance
+  - SDXL: ~5s per 1024x1024 image on RTX 4090
+  - Flux: ~8s per image
+  - 8GB+ VRAM minimum, 12GB+ recommended
+models: ["Stable Diffusion XL", "Flux", "Wan2.1"]
+tools: ["ComfyUI", "diffusers", "PyTorch"]
+use_cases:
+  - Art generation
+  - Product mockups
+  - Marketing assets
+  - Thumbnail creation
+input_example: |
+  {"prompt": "A serene mountain landscape at sunset, photorealistic", "width": 1024, "height": 1024, "steps": 30}
+output_example: |
+  {"image_url": "https://storage.example.com/output/img_abc123.png", "seed": 42, "duration_ms": 5200}

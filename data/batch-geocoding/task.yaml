@@ -1,0 +1,39 @@
+name: batch-geocoding
+display_name: "Batch Geocoding"
+category: data
+tags: [geocoding, maps, location, coordinates, addresses]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "50-500ms per address (rate limited)"
+memory_mb: 512
+description: "Convert addresses to coordinates and reverse geocode at scale using OpenStreetMap."
+long_description: |
+  Convert addresses to geographic coordinates (and reverse) at scale.
+
+  ## Tools
+  - Nominatim (OpenStreetMap, self-hostable)
+  - geopy (Python geocoding library)
+
+  ## Features
+  - Forward geocoding (address → coordinates)
+  - Reverse geocoding (coordinates → address)
+  - Batch processing with rate limiting
+  - Self-hosted Nominatim for unlimited requests
+  - Result caching
+
+  ## Performance
+  - 50-500ms per address (API rate limited)
+  - Self-hosted: limited by hardware, no rate limits
+  - CPU only
+models: []
+tools: ["Nominatim", "geopy"]
+use_cases:
+  - Customer mapping
+  - Delivery routing
+  - Location analytics
+  - Data enrichment
+input_example: |
+  {"addresses": ["1600 Pennsylvania Ave, Washington DC", "10 Downing Street, London"], "format": "geojson"}
+output_example: |
+  {"results": [{"address": "1600 Pennsylvania Ave...", "lat": 38.8977, "lon": -77.0365}, {"address": "10 Downing St...", "lat": 51.5034, "lon": -0.1276}]}

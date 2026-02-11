@@ -1,0 +1,38 @@
+name: image-captioning
+display_name: "Image Captioning"
+category: media
+tags: [image, captioning, description, alt-text, accessibility]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "0.5-3s per image"
+memory_mb: 4000
+description: "Generate natural language descriptions of images for alt text, search indexing, and accessibility."
+long_description: |
+  Generate natural language descriptions of images using vision-language models.
+
+  ## Supported Models
+  - BLIP-2 (high quality, GPU recommended)
+  - LLaVA (detailed descriptions)
+  - Florence-2 (fast, multi-task)
+
+  ## Features
+  - Short captions and detailed descriptions
+  - Visual question answering
+  - Multi-language output
+  - Batch processing
+
+  ## Performance
+  - 0.5-3s per image on GPU
+  - CPU possible with smaller models (Florence-2)
+models: ["BLIP-2", "LLaVA", "Florence-2"]
+tools: ["Transformers", "PyTorch"]
+use_cases:
+  - Alt text generation for accessibility
+  - Image search indexing
+  - Content tagging
+  - Social media automation
+input_example: |
+  {"image_url": "https://example.com/photo.jpg", "mode": "detailed"}
+output_example: |
+  {"caption": "A golden retriever playing fetch on a sandy beach during sunset, with waves in the background"}

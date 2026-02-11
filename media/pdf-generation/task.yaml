@@ -1,0 +1,39 @@
+name: pdf-generation
+display_name: "PDF Generation"
+category: media
+tags: [pdf, generation, reports, invoices, documents]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "0.5-5s per document"
+memory_mb: 1000
+description: "Generate PDF reports, invoices, and documents from HTML templates or structured data."
+long_description: |
+  Generate PDF documents from templates, HTML, or structured data.
+
+  ## Tools
+  - WeasyPrint (HTML/CSS → PDF, best for styled documents)
+  - ReportLab (programmatic PDF creation)
+  - Playwright (headless Chrome HTML → PDF, pixel-perfect)
+
+  ## Features
+  - Template-based generation (Jinja2 + HTML/CSS)
+  - Dynamic data binding
+  - Headers, footers, page numbers
+  - Embedded fonts and images
+  - Bulk mail merge
+
+  ## Performance
+  - 0.5-5s per document
+  - CPU only
+models: []
+tools: ["WeasyPrint", "ReportLab", "Playwright"]
+use_cases:
+  - Invoice generation
+  - Report export
+  - Certificate generation
+  - Bulk mail merge
+input_example: |
+  {"template": "invoice", "data": {"customer": "Acme Corp", "items": [{"name": "Widget", "qty": 5, "price": 9.99}]}}
+output_example: |
+  {"pdf_url": "https://storage.example.com/invoices/INV-2024-001.pdf", "pages": 1, "size_kb": 142}

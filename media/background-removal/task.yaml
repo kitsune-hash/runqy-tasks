@@ -1,0 +1,37 @@
+name: background-removal
+display_name: "Background Removal"
+category: media
+tags: [image, background, segmentation, rembg, transparency]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "0.5-5s per image"
+memory_mb: 2000
+description: "Remove backgrounds from images automatically using AI segmentation models."
+long_description: |
+  Remove backgrounds from images automatically using AI-powered segmentation.
+
+  ## Supported Models
+  - rembg (U2-Net, ISNet) — fast, general purpose
+  - SAM (Segment Anything) — precise, interactive
+
+  ## Features
+  - Batch processing
+  - PNG output with transparency
+  - Separate mask output
+  - Multiple model options for quality/speed tradeoff
+
+  ## Performance
+  - CPU: 2-5s per image
+  - GPU: ~0.5s per image
+models: ["U2-Net", "ISNet", "SAM"]
+tools: ["rembg", "Segment Anything"]
+use_cases:
+  - E-commerce product photos
+  - Profile picture processing
+  - Image compositing
+  - Batch catalog processing
+input_example: |
+  {"image_url": "https://example.com/photo.jpg", "model": "u2net"}
+output_example: |
+  {"image_url": "https://storage.example.com/output/nobg.png", "mask_url": "https://storage.example.com/output/mask.png"}

@@ -1,0 +1,40 @@
+name: text-embeddings
+display_name: "Text Embeddings"
+category: ai
+tags: [embeddings, vectors, search, rag, semantic]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "5-20ms per text (GPU), 20-100ms (CPU)"
+memory_mb: 2000
+description: "Generate vector embeddings for semantic search, RAG pipelines, and document clustering."
+long_description: |
+  Generate dense vector embeddings from text for semantic search, RAG, and clustering.
+  High-throughput batch processing with model kept in memory.
+
+  ## Supported Models
+  - sentence-transformers (all-MiniLM, BGE, E5)
+  - OpenCLIP for multi-modal embeddings
+
+  ## Features
+  - Batch processing (hundreds of texts per request)
+  - Multiple embedding dimensions (384, 768, 1024)
+  - Normalized outputs for cosine similarity
+  - Multi-language support
+
+  ## Performance
+  - GPU: 5-20ms per text
+  - CPU: 20-100ms per text
+  - Batch throughput: 1000+ texts/sec on GPU
+models: ["all-MiniLM-L6-v2", "BGE-large", "E5-large", "OpenCLIP"]
+tools: ["sentence-transformers", "PyTorch"]
+use_cases:
+  - Semantic search
+  - RAG pipelines
+  - Document clustering
+  - Duplicate detection
+  - Recommendation systems
+input_example: |
+  {"texts": ["How to train a neural network", "Deep learning tutorial"], "model": "all-MiniLM-L6-v2"}
+output_example: |
+  {"embeddings": [[0.023, -0.041, ...], [0.018, -0.035, ...]], "dimensions": 384}

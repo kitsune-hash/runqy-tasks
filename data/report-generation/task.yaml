@@ -1,0 +1,40 @@
+name: report-generation
+display_name: "Report Generation"
+category: data
+tags: [report, analytics, dashboard, pdf, excel]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "5s-5min depending on data volume"
+memory_mb: 2000
+description: "Aggregate data and generate formatted reports as PDF, Excel, HTML, or CSV."
+long_description: |
+  Aggregate data from multiple sources and generate formatted reports.
+
+  ## Tools
+  - pandas/polars (data aggregation)
+  - Jinja2 (HTML templating)
+  - WeasyPrint (HTML → PDF)
+  - openpyxl (Excel generation)
+
+  ## Features
+  - Template-based report generation
+  - Charts and visualizations (matplotlib/plotly)
+  - Multiple output formats: PDF, Excel, HTML, CSV
+  - Scheduled generation (daily/weekly/monthly)
+  - Email delivery integration
+
+  ## Performance
+  - 5s-5min depending on data volume
+  - CPU only
+models: []
+tools: ["pandas", "polars", "Jinja2", "WeasyPrint", "openpyxl"]
+use_cases:
+  - Daily KPI dashboards
+  - Financial reports
+  - Client reports
+  - Compliance reports
+input_example: |
+  {"template": "monthly_kpi", "date_range": {"start": "2024-01-01", "end": "2024-01-31"}, "format": "pdf"}
+output_example: |
+  {"report_url": "https://storage.example.com/reports/kpi_jan2024.pdf", "pages": 8, "charts": 12}

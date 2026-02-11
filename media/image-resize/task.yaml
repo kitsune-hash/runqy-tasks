@@ -1,0 +1,40 @@
+name: image-resize
+display_name: "Image Resize & Optimization"
+category: media
+tags: [image, resize, optimization, webp, thumbnails]
+hardware: [cpu]
+gpu_required: false
+mode: long_running
+avg_latency: "10-100ms per image"
+memory_mb: 512
+description: "Batch resize, crop, and optimize images for web delivery with format conversion."
+long_description: |
+  Batch resize, crop, and optimize images for web delivery.
+
+  ## Tools
+  - Pillow (Python Imaging Library)
+  - libvips (high-performance, low memory)
+
+  ## Features
+  - Smart crop (face-aware centering)
+  - Format conversion (JPEG, PNG, WebP, AVIF)
+  - Quality optimization (perceptual quality metrics)
+  - EXIF metadata handling (strip or preserve)
+  - Responsive image set generation (multiple sizes)
+  - Batch processing with high throughput
+
+  ## Performance
+  - 10-100ms per image on CPU
+  - CPU only — no GPU needed
+  - libvips uses streaming, minimal memory footprint
+models: []
+tools: ["Pillow", "libvips"]
+use_cases:
+  - Thumbnail generation
+  - Responsive image sets
+  - WebP/AVIF conversion
+  - CDN preprocessing
+input_example: |
+  {"image_url": "https://example.com/photo.jpg", "sizes": [{"width": 300, "height": 300}, {"width": 800}], "format": "webp", "quality": 85}
+output_example: |
+  {"images": [{"url": "https://storage.example.com/300x300.webp", "size_kb": 24}, {"url": "https://storage.example.com/800w.webp", "size_kb": 68}]}

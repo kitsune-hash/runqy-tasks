@@ -1,0 +1,40 @@
+name: pdf-extraction
+display_name: "PDF Text Extraction"
+category: media
+tags: [pdf, extraction, parsing, tables, documents]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "0.5-10s per document"
+memory_mb: 1000
+description: "Extract structured text, tables, and metadata from PDF files."
+long_description: |
+  Extract structured text, tables, and metadata from PDF documents.
+
+  ## Tools
+  - pdfplumber (text + table extraction)
+  - PyMuPDF / fitz (fast text extraction)
+  - Camelot (specialized table extraction)
+  - Unstructured (AI-powered document parsing)
+
+  ## Features
+  - Text extraction with position data
+  - Table detection and extraction to CSV/JSON
+  - Metadata extraction (author, date, etc.)
+  - Page-by-page processing
+  - Image extraction from PDFs
+
+  ## Performance
+  - 0.5-10s per document depending on complexity
+  - CPU only
+models: []
+tools: ["pdfplumber", "PyMuPDF", "Camelot", "Unstructured"]
+use_cases:
+  - Document parsing
+  - Contract analysis
+  - Data extraction from forms
+  - RAG document ingestion
+input_example: |
+  {"pdf_url": "https://example.com/contract.pdf", "extract_tables": true, "pages": "all"}
+output_example: |
+  {"text": "Agreement between...", "tables": [{"headers": ["Item", "Amount"], "rows": [["Service A", "$500"]]}], "pages": 12}

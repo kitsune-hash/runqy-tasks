@@ -1,0 +1,40 @@
+name: content-moderation
+display_name: "Content Moderation"
+category: ai
+tags: [moderation, nsfw, safety, classification, text, image]
+hardware: [cpu]
+gpu_required: false
+mode: long_running
+avg_latency: "~110ms/text, ~150ms/image"
+memory_mb: 2000
+description: "Classify text and images for NSFW, violence, hate speech, and other unsafe content."
+long_description: |
+  Classify text and images for unsafe content including NSFW, violence, hate speech, and more.
+  Runs on CPU only — no GPU required.
+
+  ## Models
+  - Text: DiffGuard + KoalaAI + XLM-RoBERTa
+  - Image: Marqo ViT + NudeNet + CLIP
+
+  ## Features
+  - Multi-language support (auto-translate)
+  - 9 content categories
+  - Configurable thresholds per category
+  - LRU cache for repeated content
+  - Combined text + image analysis
+
+  ## Performance
+  - ~110ms per text classification
+  - ~150ms per image classification
+  - CPU only — deploy on any machine
+models: ["DiffGuard", "KoalaAI", "XLM-RoBERTa", "Marqo ViT", "NudeNet", "CLIP"]
+tools: ["content-classifier", "Transformers"]
+use_cases:
+  - User-generated content filtering
+  - Image generation safety gating
+  - Comment moderation
+  - Platform trust & safety
+input_example: |
+  {"text": "Some user comment to check", "image_url": "https://example.com/upload.jpg"}
+output_example: |
+  {"safe": false, "categories": {"nsfw": 0.92, "violence": 0.05, "hate": 0.01}, "action": "block"}

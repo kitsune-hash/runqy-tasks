@@ -1,0 +1,38 @@
+name: audio-waveform
+display_name: "Audio Waveform Generation"
+category: media
+tags: [audio, waveform, visualization, music, podcast]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "1-5s per file"
+memory_mb: 512
+description: "Generate visual waveform images from audio files for players and previews."
+long_description: |
+  Generate visual waveform images from audio files.
+
+  ## Tools
+  - FFmpeg (audio analysis)
+  - audiowaveform (BBC's open-source tool)
+  - matplotlib (custom visualizations)
+
+  ## Features
+  - PNG/SVG waveform output
+  - Customizable colors and dimensions
+  - Peak data JSON output for interactive players
+  - Multiple audio format support (MP3, WAV, FLAC, OGG)
+
+  ## Performance
+  - 1-5s per file
+  - CPU only
+models: []
+tools: ["FFmpeg", "audiowaveform", "matplotlib"]
+use_cases:
+  - Music player UIs
+  - Podcast preview images
+  - Audio editing interfaces
+  - Social media audio posts
+input_example: |
+  {"audio_url": "https://example.com/track.mp3", "width": 800, "height": 200, "color": "#3b82f6"}
+output_example: |
+  {"image_url": "https://storage.example.com/waveforms/track.png", "peaks_url": "https://storage.example.com/waveforms/track.json", "duration_sec": 245}

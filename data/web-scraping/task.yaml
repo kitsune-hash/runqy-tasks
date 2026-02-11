@@ -1,0 +1,42 @@
+name: web-scraping
+display_name: "Web Scraping"
+category: data
+tags: [scraping, crawling, web, playwright, data-extraction]
+hardware: [cpu]
+gpu_required: false
+mode: long_running
+avg_latency: "2-30s per page"
+memory_mb: 512
+description: "Crawl and extract structured data from websites at scale with JavaScript rendering."
+long_description: |
+  Crawl and extract structured data from websites at scale.
+
+  ## Tools
+  - Playwright (JavaScript rendering, headless browser)
+  - BeautifulSoup (HTML parsing)
+  - Scrapy (crawling framework)
+
+  ## Features
+  - JavaScript rendering (SPA support)
+  - Anti-bot handling and stealth mode
+  - Rate limiting and politeness
+  - Proxy rotation
+  - Structured output (JSON, CSV)
+  - Cookie and auth session support
+  - Parallel crawling across workers
+
+  ## Performance
+  - 2-30s per page depending on complexity
+  - 512MB+ RAM per browser instance
+models: []
+tools: ["Playwright", "BeautifulSoup", "Scrapy"]
+use_cases:
+  - Price monitoring
+  - Competitor analysis
+  - Lead generation
+  - Content aggregation
+  - Market research
+input_example: |
+  {"url": "https://example.com/products", "selectors": {"title": "h1.product-name", "price": ".price-current"}, "paginate": true}
+output_example: |
+  {"items": [{"title": "Widget Pro", "price": "$29.99"}, {"title": "Widget Basic", "price": "$9.99"}], "pages_crawled": 5}

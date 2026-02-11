@@ -1,0 +1,40 @@
+name: screenshot
+display_name: "Screenshot Generation"
+category: media
+tags: [screenshot, browser, web, preview, playwright]
+hardware: [cpu]
+gpu_required: false
+mode: long_running
+avg_latency: "2-10s per page"
+memory_mb: 512
+description: "Capture screenshots of web pages at various viewports using headless Chromium."
+long_description: |
+  Capture screenshots of web pages using Playwright with headless Chromium.
+  Browser stays loaded for fast consecutive captures.
+
+  ## Tools
+  - Playwright (Chromium headless)
+
+  ## Features
+  - Full page or viewport capture
+  - Multiple viewport sizes (desktop, tablet, mobile)
+  - PDF export
+  - Wait for specific elements or network idle
+  - Ad/tracker blocking
+  - Custom CSS injection
+  - Cookie/auth support
+
+  ## Performance
+  - 2-10s per page (including render time)
+  - CPU only, 512MB+ RAM
+models: []
+tools: ["Playwright", "Chromium"]
+use_cases:
+  - Link previews and social cards
+  - SEO monitoring
+  - Visual regression testing
+  - Web archiving
+input_example: |
+  {"url": "https://example.com", "viewport": {"width": 1280, "height": 720}, "full_page": true}
+output_example: |
+  {"image_url": "https://storage.example.com/screenshots/example_com.png", "width": 1280, "height": 3200}

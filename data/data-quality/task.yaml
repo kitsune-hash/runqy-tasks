@@ -1,0 +1,41 @@
+name: data-quality
+display_name: "Data Quality Checks"
+category: data
+tags: [quality, validation, anomaly, monitoring, data]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "Seconds to minutes"
+memory_mb: 2000
+description: "Validate datasets against rules, detect anomalies and data drift."
+long_description: |
+  Validate datasets against configurable rules and detect anomalies.
+
+  ## Tools
+  - Great Expectations (comprehensive validation framework)
+  - pandas (custom validators)
+  - Custom rule engine
+
+  ## Features
+  - Rule-based validation (nulls, ranges, patterns, uniqueness)
+  - Statistical anomaly detection
+  - Schema validation and drift detection
+  - Freshness checks
+  - Historical tracking and trend analysis
+  - Alerting on validation failures
+
+  ## Performance
+  - Seconds to minutes depending on dataset size
+  - CPU only
+models: []
+tools: ["Great Expectations", "pandas"]
+use_cases:
+  - Pipeline health monitoring
+  - Schema validation
+  - Freshness checks
+  - Null and duplicate detection
+  - Statistical anomaly detection
+input_example: |
+  {"dataset_url": "s3://lake/orders/latest.parquet", "suite": "orders_validation", "alert_on_failure": true}
+output_example: |
+  {"passed": false, "total_checks": 24, "failures": 2, "details": [{"check": "null_rate", "column": "email", "expected": "<0.01", "actual": 0.05}]}

@@ -1,0 +1,39 @@
+name: zero-shot-classification
+display_name: "Zero-Shot Classification"
+category: ai
+tags: [classification, zero-shot, nlp, clip, tagging]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "50-200ms per item"
+memory_mb: 3000
+description: "Classify text or images into arbitrary categories without any training data."
+long_description: |
+  Classify text or images into arbitrary categories without training.
+  Provide candidate labels at inference time — no fine-tuning needed.
+
+  ## Supported Models
+  - CLIP (images → arbitrary labels)
+  - BART-large-mnli (text)
+  - DeBERTa-v3-base-mnli (text)
+
+  ## Features
+  - Dynamic category labels (change at any time)
+  - Multi-label classification
+  - Confidence scores per category
+  - Works with any language (multilingual models available)
+
+  ## Performance
+  - 50-200ms per item
+  - CPU viable, GPU faster for batch processing
+models: ["CLIP", "BART-large-mnli", "DeBERTa-v3"]
+tools: ["Transformers", "OpenCLIP", "PyTorch"]
+use_cases:
+  - Dynamic content tagging
+  - Content routing
+  - Intent detection
+  - Image categorization
+input_example: |
+  {"text": "The stock market crashed today", "labels": ["finance", "sports", "politics", "technology"]}
+output_example: |
+  {"labels": ["finance", "politics", "technology", "sports"], "scores": [0.92, 0.04, 0.03, 0.01]}

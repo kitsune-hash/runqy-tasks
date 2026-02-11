@@ -1,0 +1,38 @@
+name: video-transcoding
+display_name: "Video Transcoding"
+category: media
+tags: [video, ffmpeg, transcoding, compression, streaming]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "Seconds to hours depending on length & target format"
+memory_mb: 2000
+description: "Convert, compress, and reformat video files using FFmpeg with optional hardware acceleration."
+long_description: |
+  Convert, compress, and reformat video files using FFmpeg.
+  Supports hardware acceleration via NVENC (NVIDIA GPU) and VAAPI.
+
+  ## Features
+  - Codec conversion: H.264, H.265/HEVC, VP9, AV1
+  - Resolution scaling and aspect ratio handling
+  - Adaptive streaming output (HLS/DASH)
+  - Thumbnail and preview extraction
+  - Audio extraction and transcoding
+  - Watermarking and overlay
+  - Batch processing multiple files
+
+  ## Performance
+  - CPU: real-time to 10x slower depending on codec
+  - NVENC GPU: 5-20x real-time for H.264/H.265
+  - AV1 encoding is significantly slower but produces smaller files
+models: []
+tools: ["FFmpeg", "NVENC", "VAAPI"]
+use_cases:
+  - Upload processing pipelines
+  - Adaptive streaming (HLS/DASH)
+  - Format conversion
+  - Video compression for web delivery
+input_example: |
+  {"input_url": "s3://uploads/raw_video.mov", "codec": "h265", "resolution": "1920x1080", "crf": 23}
+output_example: |
+  {"output_url": "s3://processed/video.mp4", "duration_sec": 120, "size_mb": 45, "codec": "h265"}

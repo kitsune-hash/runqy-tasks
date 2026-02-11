@@ -1,0 +1,40 @@
+name: text-to-speech
+display_name: "Text-to-Speech"
+category: ai
+tags: [tts, audio, speech, voice, synthesis]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: long_running
+avg_latency: "1-10s per sentence"
+memory_mb: 4000
+description: "Convert text to natural-sounding speech audio with multiple voices and languages."
+long_description: |
+  Convert text to natural-sounding speech using neural TTS models.
+
+  ## Supported Models
+  - Coqui TTS (GPU recommended)
+  - Piper (fast, CPU-friendly, offline)
+  - Bark (expressive, multi-language)
+  - XTTS-v2 (voice cloning)
+
+  ## Features
+  - Multi-language support
+  - Voice cloning with XTTS-v2 (provide reference audio)
+  - Emotion/style control
+  - Multiple output formats (WAV, MP3, OGG)
+  - Streaming audio output
+
+  ## Performance
+  - Piper on CPU: near real-time
+  - Coqui/Bark on GPU: 1-10s per sentence
+models: ["Coqui TTS", "Piper", "Bark", "XTTS-v2"]
+tools: ["Coqui TTS", "Piper", "PyTorch"]
+use_cases:
+  - Audiobook generation
+  - Accessibility
+  - IVR systems
+  - Voice assistants
+input_example: |
+  {"text": "Welcome to our platform. How can I help you today?", "voice": "en_female_01", "format": "mp3"}
+output_example: |
+  {"audio_url": "https://storage.example.com/output/speech_abc.mp3", "duration_sec": 3.2, "sample_rate": 22050}

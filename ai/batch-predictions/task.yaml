@@ -1,0 +1,38 @@
+name: batch-predictions
+display_name: "Batch Predictions"
+category: ai
+tags: [ml, batch, inference, predictions, scoring]
+hardware: [cpu, gpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "Varies by model and dataset size"
+memory_mb: 4000
+description: "Run ML models on large datasets — batch inference at scale with fan-out to parallel workers."
+long_description: |
+  Run any ML model on large datasets for batch inference.
+  Fan-out splits a dataset across parallel workers, each scoring a chunk, then merges results.
+
+  ## Supported Frameworks
+  - scikit-learn, PyTorch, ONNX
+  - Any model that takes tabular/text/image input
+
+  ## Features
+  - Fan-out: split dataset → parallel workers → merge results
+  - Support for any model format (pickle, ONNX, safetensors)
+  - Progress tracking per batch
+  - Dead letter queue for failed records
+
+  ## Performance
+  - Depends entirely on model complexity and hardware
+  - Linear scaling with number of workers
+models: ["scikit-learn", "PyTorch", "ONNX"]
+tools: ["scikit-learn", "PyTorch", "ONNX Runtime"]
+use_cases:
+  - Lead scoring
+  - Churn prediction
+  - Fraud detection
+  - Recommendation generation
+input_example: |
+  {"model_path": "s3://models/churn_v2.onnx", "data_url": "s3://datasets/customers.parquet", "batch_size": 1000}
+output_example: |
+  {"results_url": "s3://results/predictions_20240115.parquet", "total_records": 50000, "duration_sec": 45}

@@ -1,0 +1,39 @@
+name: rss-aggregation
+display_name: "RSS / Feed Aggregation"
+category: data
+tags: [rss, feeds, news, aggregation, content]
+hardware: [cpu]
+gpu_required: false
+mode: oneshot
+avg_latency: "1-5s per feed"
+memory_mb: 256
+description: "Fetch, parse, and normalize content from RSS/Atom feeds with deduplication."
+long_description: |
+  Fetch, parse, and normalize content from RSS and Atom feeds.
+
+  ## Tools
+  - feedparser (Python RSS/Atom parser)
+  - httpx (async HTTP client)
+
+  ## Features
+  - RSS 2.0 and Atom support
+  - Content deduplication
+  - Full content extraction (beyond feed summaries)
+  - Category tagging
+  - Digest generation
+  - Scheduled polling
+
+  ## Performance
+  - 1-5s per feed
+  - Minimal resource requirements
+models: []
+tools: ["feedparser", "httpx"]
+use_cases:
+  - News aggregation
+  - Content curation
+  - Competitive intelligence
+  - Social listening
+input_example: |
+  {"feeds": ["https://example.com/feed.xml", "https://blog.example.com/rss"], "since": "2024-01-01"}
+output_example: |
+  {"articles": [{"title": "New Release...", "url": "https://...", "date": "2024-01-15", "summary": "..."}], "total": 42, "new": 12}
